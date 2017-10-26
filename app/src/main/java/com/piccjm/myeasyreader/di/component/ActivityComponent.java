@@ -2,7 +2,7 @@ package com.piccjm.myeasyreader.di.component;
 
 import android.app.Activity;
 
-import com.piccjm.myeasyreader.MainActivity;
+import com.piccjm.myeasyreader.ui.activity.MainActivity;
 import com.piccjm.myeasyreader.di.module.ActivityModule;
 import com.piccjm.myeasyreader.di.scope.ActivityScope;
 

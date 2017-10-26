@@ -1,4 +1,4 @@
-package com.piccjm.myeasyreader;
+package com.piccjm.myeasyreader.ui.activity;
 
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.piccjm.myeasyreader.R;
 import com.piccjm.myeasyreader.app.App;
 import com.piccjm.myeasyreader.di.component.ActivityComponent;
 import com.piccjm.myeasyreader.di.component.DaggerActivityComponent;
