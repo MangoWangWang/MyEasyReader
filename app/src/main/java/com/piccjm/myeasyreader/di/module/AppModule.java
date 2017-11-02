@@ -1,8 +1,10 @@
 package com.piccjm.myeasyreader.di.module;
 
 import com.piccjm.myeasyreader.app.App;
-import com.piccjm.myeasyreader.http.RetrofitUtils;
+import com.piccjm.myeasyreader.http.service.GankIoService;
 import com.piccjm.myeasyreader.http.service.ZhiHuService;
+import com.piccjm.myeasyreader.http.utils.RetrofitGankIoUtils;
+import com.piccjm.myeasyreader.http.utils.RetrofitZhiHuUtils;
 
 import javax.inject.Singleton;
 
@@ -25,10 +27,16 @@ public class AppModule {
     App provideApplicationContext() {
         return application;
     }
+//
+    @Provides
+    @Singleton
+    RetrofitZhiHuUtils provideRetrofitZhiHuUtils(ZhiHuService zhihuApiService) {
+        return new RetrofitZhiHuUtils(zhihuApiService);
+    }
 
     @Provides
     @Singleton
-    RetrofitUtils provideRetrofitHelper(ZhiHuService zhihuApiService) {
-        return new RetrofitUtils(zhihuApiService);
+    RetrofitGankIoUtils provideRetrofitGankIoUtils(GankIoService gankIoService) {
+        return new RetrofitGankIoUtils(gankIoService);
     }
 }

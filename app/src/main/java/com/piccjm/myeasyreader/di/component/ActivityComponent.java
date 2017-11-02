@@ -5,6 +5,8 @@ import android.app.Activity;
 import com.piccjm.myeasyreader.ui.activity.MainActivity;
 import com.piccjm.myeasyreader.di.module.ActivityModule;
 import com.piccjm.myeasyreader.di.scope.ActivityScope;
+import com.piccjm.myeasyreader.ui.activity.zhihu.ZhiHuDetailActivity;
+import com.piccjm.myeasyreader.ui.activity.zhihu.ZhihuThemeActivity;
 
 import dagger.Component;
 
@@ -18,4 +20,6 @@ public interface ActivityComponent {
     Activity getActivity();
 
     void inject(MainActivity mainActivity);
+    void inject(ZhiHuDetailActivity zhiHuDetailActivity);
+    void inject(ZhihuThemeActivity zhihuThemeActivity);
 }

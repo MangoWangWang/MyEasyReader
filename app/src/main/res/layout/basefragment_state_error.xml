@@ -1,11 +1,11 @@
 <!--加载失败-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_error_refresh"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:visibility="gone">
+              android:id="@+id/ll_error_refresh"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:visibility="gone">
 
     <ImageView
         android:id="@+id/img_err"

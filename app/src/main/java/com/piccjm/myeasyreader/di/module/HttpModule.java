@@ -1,5 +1,8 @@
 package com.piccjm.myeasyreader.di.module;
 
+import com.piccjm.myeasyreader.di.qualifier.GankUrl;
+import com.piccjm.myeasyreader.di.qualifier.ZhihuUrl;
+import com.piccjm.myeasyreader.http.service.GankIoService;
 import com.piccjm.myeasyreader.http.service.ZhiHuService;
 
 import java.util.concurrent.TimeUnit;
@@ -46,24 +49,38 @@ public class HttpModule {
 
 
     private Retrofit createRetrofit(Retrofit.Builder builder, OkHttpClient client, String url) {
-        return builder  // 创建Retrofit对象
-                .baseUrl(url) // 设置网络请求Url(Url必须以"/"结束,否则会报错)
-                .client(client) //
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 通过RxJavaCallAdapterFactory为Retrofit添加RxJava支持：
-                .addConverterFactory(GsonConverterFactory.create())  // 设置json解析器
+        return builder
+                .baseUrl(url)
+                .client(client)
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
 
     @Singleton
     @Provides
+    @ZhihuUrl
     Retrofit provideZhiHuRetrofit(Retrofit.Builder builder, OkHttpClient client) {
         return createRetrofit(builder, client, ZhiHuService.HOST);
     }
 
     @Singleton
     @Provides
-    ZhiHuService provideZhihuService(Retrofit retrofit) {
+    ZhiHuService provideZhihuService(@ZhihuUrl Retrofit retrofit) {
         return retrofit.create(ZhiHuService.class);
+    }
+
+    @Singleton
+    @Provides
+    @GankUrl
+    Retrofit provideGankIoRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, GankIoService.API_GANKIO);
+    }
+
+    @Singleton
+    @Provides
+    GankIoService provideGankIoService(@GankUrl Retrofit retrofit) {
+        return retrofit.create(GankIoService.class);
     }
 
 

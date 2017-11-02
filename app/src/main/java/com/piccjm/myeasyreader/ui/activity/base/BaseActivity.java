@@ -265,14 +265,14 @@ public abstract  class BaseActivity extends AppCompatActivity implements LifeSub
     /**
      * 颜色变化过度
      *
-     * @param fraction
+     * @param fraction 小部分
      * @param startValue
      * @param endValue
      * @return
      */
     public Object evaluateColor(float fraction, Object startValue, Object endValue) {
         int startInt = (Integer) startValue;
-        int startA = (startInt >> 24) & 0xff;
+        int startA = (startInt >> 24) & 0xff;  // 0xff的二进制代码为1111 1111
         int startR = (startInt >> 16) & 0xff;
         int startG = (startInt >> 8) & 0xff;
         int startB = startInt & 0xff;

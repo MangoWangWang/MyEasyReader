@@ -24,7 +24,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        Utils.init(this); //一个utils库的初始化 https://github.com/Blankj/AndroidUtilCode/blob/master/README-CN.md
+        Utils.init(this);//一个utils库的初始化 https://github.com/Blankj/AndroidUtilCode/blob/master/README-CN.md
     }
 
     public static AppComponent getAppComponent(){
@@ -36,7 +36,6 @@ public class App extends Application {
         }
         return appComponent;
     }
-
 
 
 }
