@@ -125,26 +125,33 @@ public class MainActivity extends BaseActivity {
 
   */
 
+    // 首页顶部工具栏最左边的View
     @BindView(R.id.fl_title_menu)
     FrameLayout nvMenu;
 
+    // 主布局最外面的侧滑布局
     @BindView(R.id.dl_layout)
     DrawerLayout dlLayout;
 
+    // 顶部工具栏
     @BindView(R.id.toolbar)
     Toolbar tbToolbar;
 
+    // 顶部三个控制图标的集合(RadioGroup)
     @BindView(R.id.rg_home_viewpager_contorl)
     RadioGroup rgHomeViewpagerContorl;
 
+    // 用于存放fragment的ViewPager
     @BindView(R.id.vp_content)
     ViewPager vpContent;
 
+    // 给title_menu添加监听方法
     @OnClick(R.id.fl_title_menu)
     public void flTitleMenu() {
         dlLayout.openDrawer(GravityCompat.START);
     }
 
+    // 重写BaseActivity的getLayoutId方法
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
@@ -152,13 +159,25 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // 调用BaseActivity的onCreate方法
+        // 1.去除标题
+        // 2.setContentView,通过调用getLayoutId方法
+        // 3.实例化一个侧滑速度跟踪对象,用于判断是否是滑动切换页面
+        // 4.将activity添加到activityList中,统一管理
         super.onCreate(savedInstanceState);
+
+        // ButterKnife实例化控件
         ButterKnife.bind(this);
+        // 调用BastActivity的setToolBar设置toolbar
         setToolBar(tbToolbar,"");
+
         ActionBar supportActionBar = getSupportActionBar();
         supportActionBar.setDisplayHomeAsUpEnabled(false);//不显示返回键
         supportActionBar.setDisplayShowTitleEnabled(false);//去除默认标题
+
+        // 实现dagger2的依赖注入
         getActivityComponent().inject(this);
+
         initView();
         //初始化首页栏目顺序
         SPUtils spUtils = new SPUtils("home_list");
@@ -171,10 +190,10 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
+        // 切换fragment的监听方法
         rgHomeViewpagerContorl.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
                 switch (i) {
                     case R.id.rb_home_pager:
                         vpContent.setCurrentItem(0);// 设置当前页面

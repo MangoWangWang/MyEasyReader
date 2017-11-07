@@ -28,8 +28,8 @@ import rx.subscriptions.CompositeSubscription;
  * Created by mangowangwang on 2017/10/23.
  */
 
-public abstract  class BaseActivity extends AppCompatActivity implements LifeSubscription {
-    // 管理所有运行的activity
+public abstract class BaseActivity extends AppCompatActivity implements LifeSubscription {
+    // 管理所有运行的activity 不能被继承的
     public final static List<AppCompatActivity> mActivities = new LinkedList<AppCompatActivity>();
 
     public static BaseActivity activity;

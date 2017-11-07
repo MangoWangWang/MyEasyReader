@@ -18,7 +18,7 @@ public class GankFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         TextView textView = new TextView(getActivity());
-        textView.setText("我是ZhiHuFragment");
+        textView.setText("我是GankFragment");
         return textView;
     }
 

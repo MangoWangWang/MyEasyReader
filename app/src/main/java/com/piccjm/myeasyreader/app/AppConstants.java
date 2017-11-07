@@ -2,6 +2,7 @@ package com.piccjm.myeasyreader.app;
 
 /**
  * Created by mangowangwang on 2017/10/23.
+ * 加载状态类
  */
 
 public class AppConstants {

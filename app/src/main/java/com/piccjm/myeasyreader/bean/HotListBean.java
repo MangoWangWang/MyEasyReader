@@ -15,7 +15,15 @@ public class HotListBean {
      * title : 瞎扯 · 如何正确地吐槽
      */
 
-    private List<RecentBean> recent;
+//    "recent":[
+//    {
+//        "news_id":9655293,
+//         "url":"http:\/\/news-at.zhihu.com\/api\/2\/news\/9655293",
+//         "thumbnail":"https:\/\/pic3.zhimg.com\/v2-712e001af8d60b32161bb63bb05f91f2.jpg",
+//         "title":"《让中医走向世界》，又要刷新「辣眼睛」雕塑排行榜了"
+//    },
+
+    private List<RecentBean> recent;  // 知乎热门的集合
 
     public List<RecentBean> getRecent() {
         return recent;
@@ -26,11 +34,11 @@ public class HotListBean {
     }
 
     public static class RecentBean {
-        private int news_id;
-        private String url;
-        private String thumbnail;
-        private String title;
-        private boolean readState;
+        private int news_id;  // 新闻id
+        private String url;  //  新闻detail地址
+        private String thumbnail ; // 新闻缩略图
+        private String title;  // 标题
+        private boolean readState; // 阅读状态
 
         public boolean getReadState() {
             return readState;

@@ -27,34 +27,45 @@ import rx.subscriptions.CompositeSubscription;
  * Created by mangowangwang on 2017/10/30.
  */
 
+// 泛型<P extends BasePresenter> 向下通配符
 public abstract class BaseFragment <P extends BasePresenter> extends Fragment implements LifeSubscription, Stateful {
 
     @Inject
-    protected P mPresenter;
+    protected P mPresenter;  // 参数类型化(交换机)
 
-    public LoadingPage mLoadingPage;
+    public LoadingPage mLoadingPage;  // 加载页面
 
     private boolean mIsVisible = false;     // fragment是否显示了
 
-    private boolean isPrepared = false;
+    private boolean isPrepared = false;  // 是否准备好
 
-    private boolean isFirst = true; //只加载一次界面
+    private boolean isFirst = true; // 只加载一次界面
 
 
     protected View contentView;
-    private Unbinder bind;
+
+    private Unbinder bind; // 解绑工具
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        // 采用匿名类的方式 强行实例化mLoadingPage,因为LoadingPage是抽象类型,必须重写抽象方法
         if (mLoadingPage == null) {
             mLoadingPage = new LoadingPage(getContext()) {
                 @Override
                 protected void initView() {
                     if (isFirst) {
+                        // this.contentView 返回的的加载状态视图(成功,失败) 根据状态
+                        // BaseFragment.this.contentView 原BaseFragment中的contentView
                         BaseFragment.this.contentView = this.contentView;
+
+                        // 进行界面的绑定
                         bind = ButterKnife.bind(BaseFragment.this, contentView);
+
+                        // 进行界面初始化
                         BaseFragment.this.initView();
+
                         isFirst = false;
                     }
                 }
@@ -78,14 +89,17 @@ public abstract class BaseFragment <P extends BasePresenter> extends Fragment im
 
     /**
      * 在这里实现Fragment数据的缓加载.
+     * 实现显示时加载数据,不显示时不缓存数据
      */
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (getUserVisibleHint()) {//fragment可见
+        if (getUserVisibleHint()) {
+            //fragment可见
             mIsVisible = true;
             onVisible();
-        } else {//fragment不可见
+        } else {
+            //fragment不可见
             mIsVisible = false;
             onInvisible();
         }

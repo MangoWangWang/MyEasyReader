@@ -26,10 +26,10 @@ public class SectionListBean {
     }
 
     public static class DataBean {
-        private String description;
-        private int id;
-        private String name;
-        private String thumbnail;
+        private String description;  // 描述
+        private int id;  // id
+        private String name;  // 标题
+        private String thumbnail; // 缩略图
 
         public String getNamegetDescription() {
             return description;

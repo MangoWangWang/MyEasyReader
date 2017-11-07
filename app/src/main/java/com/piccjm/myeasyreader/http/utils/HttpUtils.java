@@ -39,6 +39,9 @@ public class HttpUtils {
         Subscription subscription = observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(callback);
+        // 调用具体类型的fragment重写方法进行绑定
+        // @Override
+       //  public void bindSubscription(Subscription subscription)
         lifecycle.bindSubscription(subscription);
 
     }

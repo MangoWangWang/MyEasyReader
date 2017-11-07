@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.piccjm.myeasyreader">
 
+    <!--添加的权限有:
+    1.允许程序写入外部存储，如SD卡上写文件
+    2.获取网络信息状态，如当前的网络连接是否有效
+    3.获取当前WiFi接入的状态以及WLAN热点的信息
+    4.访问网络连接，可能产生GPRS流量
+    5.访问电话状态
+    6.读取系统底层日志
+     -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -9,6 +17,12 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
 
+    <!--name:实例化自定义的app类,用于实现和保存程序中的全局变量和单例模式
+        supportsRtl:支持从右到左的布局
+        configChanges:切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法
+        screenOrientation:设定该活动的方向
+        windowSoftInputMode:activity主窗口与软键盘的交互模式，可以用来避免输入法面板遮挡问题
+     -->
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -20,7 +34,6 @@
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

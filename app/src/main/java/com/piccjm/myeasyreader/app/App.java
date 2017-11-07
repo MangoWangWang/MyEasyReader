@@ -16,15 +16,18 @@ import com.piccjm.myeasyreader.di.module.HttpModule;
 
 public class App extends Application {
 
-    //现在只完成了dagger2和Retrofit配合完成网络请求
-    private static App instance;
-    public static AppComponent appComponent;
 
+    private static App instance; // 静态单例变量APP
+    public static AppComponent appComponent; // 单例app组件
+
+    // 利用onCreate函数进行Utils的初始化
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
-        Utils.init(this);//一个utils库的初始化 https://github.com/Blankj/AndroidUtilCode/blob/master/README-CN.md
+        //一个utils库的初始化
+        // https://github.com/Blankj/AndroidUtilCode/blob/master/README-CN.md
+        Utils.init(this);
     }
 
     public static AppComponent getAppComponent(){

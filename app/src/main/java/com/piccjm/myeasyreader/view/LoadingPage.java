@@ -47,7 +47,7 @@ public abstract class LoadingPage extends FrameLayout {
     public LoadingPage(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
-        init();//初始化4种界面
+        init();//初始化3种界面
     }
 
 

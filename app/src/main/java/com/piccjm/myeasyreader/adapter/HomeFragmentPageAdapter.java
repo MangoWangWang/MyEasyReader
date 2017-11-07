@@ -12,8 +12,8 @@ import java.util.List;
 
 public class HomeFragmentPageAdapter  extends FragmentPagerAdapter {
 
-    private  List<Fragment> fragmentList;
-    private List<String> mTitleList;
+    private  List<Fragment> fragmentList;  // 用于4个子页面的fragment
+    private List<String> mTitleList; // 标题列表
 
     public HomeFragmentPageAdapter(FragmentManager fm, List<Fragment> fragmentList) {
         super(fm);
@@ -32,7 +32,7 @@ public class HomeFragmentPageAdapter  extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return fragmentList.size();
+        return (fragmentList == null ? 0 :fragmentList.size());
     }
     /**
      * 首页显示title，每日推荐等..

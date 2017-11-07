@@ -7,6 +7,7 @@ import com.piccjm.myeasyreader.http.LifeSubscription;
  */
 
 public interface ZhiHuPresenter {
+    // 用于View的数据刷新
     interface View extends LifeSubscription {
         void refresh();
     }

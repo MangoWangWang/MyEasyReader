@@ -209,6 +209,7 @@ public class ZhiHuPresenterImpl extends BasePresenter<ZhiHuPresenter.View> imple
         homeList.add(homeListBean);
     }
 
+    // @NonNull注解能被用来标注给定的参数或者返回值不能为null
     @NonNull
     private HomeListBean settype(int type) {
         HomeListBean homeListBean = new HomeListBean();

@@ -36,18 +36,20 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
 
     @BindView(R.id.xrv_zhihu)
     RecyclerView rvZhihu;
-    private Banner banner;
-    private ZhiHuAdapter zhiHuAdapter;
-    private List<HomeListBean> homeList;
+
+    private Banner banner; // 图片轮播控件
+    private ZhiHuAdapter zhiHuAdapter; // 知乎日报适配器
+    private List<HomeListBean> homeList; // 主页listBean
 
     @Override
     protected void initView() {
+
     }
 
     @Override
     protected void loadData() {
 
-        mPresenter.fetchData();
+        mPresenter.fetchData(); // 获取数据
     }
 
     @Override
@@ -136,6 +138,7 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
         getActivity().startActivity(intent, options.toBundle());
     }
 
+    // 实例化图片轮播
     private void initBanner(final List<DailyListBean.TopStoriesBean> topStoriesList) {
         banner.startAutoPlay();
         banner.setDelayTime(3000);
@@ -143,16 +146,19 @@ public class ZhiHuHomeFragment extends BaseFragment<ZhiHuPresenterImpl> implemen
         for (DailyListBean.TopStoriesBean topStoriesBean : topStoriesList) {
             imageList.add(topStoriesBean.getImage());
         }
+        // 设置轮播图片地址并用glideImage进行实例化
         banner.setImages(imageList).setImageLoader(new GlideImageLoader()).start();
+        // 设置图片监听
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                int id = topStoriesList.get(position).getId();
-                startZhiHuDetailActivity(id, banner);
+                int id = topStoriesList.get(position).getId();  // 获取topStoriesList的id
+                startZhiHuDetailActivity(id, banner); // 启动activity
             }
         });
     }
 
+    // 可见时滚动
     @Override
     protected void onVisible() {
         super.onVisible();

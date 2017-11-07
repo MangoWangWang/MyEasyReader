@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
-
+    <!-- 包含顶部toolbar和ViewPager-->
     <include
         android:id="@+id/include_app_bar_main"
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!--侧滑布局-->
     <include
         android:id="@+id/include_nav_header_main"
         layout="@layout/nav_header_main"

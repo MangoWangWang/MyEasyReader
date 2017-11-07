@@ -4,10 +4,38 @@ import java.util.List;
 
 /**
  * Created by mangowangwang on 2017/10/17.
+ *  "date": "20171106",
+ "stories":
+ [{
+ "images": [
+ "https:\/\/pic1.zhimg.com\/v2-afaae6eaee3d78bca3b106157e916db4.jpg"],
+ "type": 0,
+ "id": 9655370,
+ "ga_prefix": "110610",
+ "title": "酥脆掉渣、满口酱香，学会这道街头小吃，秒杀摆摊阿姨"
+ },],
+
+ "top_stories":
+ [{
+ "image": "https:\/\/pic4.zhimg.com\/v2-a8c6c4f041f7f2090023d1334c69104f.jpg",
+ "type": 0,
+ "id": 9655414,
+ "ga_prefix": "110607",
+ "title": "她从万丈高空跳下，成为世界上第一个翼装飞跃喜马拉雅的中国人"
+ },]
  */
 
+// 每日列表(知乎日报 + 图片轮播)
+
 public class DailyListBean {
-    private String date;
+    /**
+     *  "date": "20171106"
+     */
+    private String date;  // 日期
+
+    private List<StoriesBean> stories; // 知乎日报栏列表
+
+    private List<TopStoriesBean> top_stories; // 图片轮播列表
 
     public String getDate() {
         return date;
@@ -33,13 +61,23 @@ public class DailyListBean {
         this.top_stories = top_stories;
     }
 
-    private List<StoriesBean> stories;
-
-    private List<TopStoriesBean> top_stories;
+    /**
+     * "images":[
+     "https:\/\/pic1.zhimg.com\/v2-afaae6eaee3d78bca3b106157e916db4.jpg"],
+     "type":0,
+     "id":9655370,
+     "ga_prefix":"110610",
+     "title":"酥脆掉渣、满口酱香，学会这道街头小吃，秒杀摆摊阿姨"
+     */
 
 
     public static class StoriesBean {
-        private int type;
+        private int type; // 类型为 0
+        private int id;  //  信息的唯一标志
+        private String ga_prefix; // 后缀标志(月 日 时)
+        private String title;  // 文本内容
+        private List<String> images; // 图片
+        private boolean readState;  // 阅读状态
 
         public int getType() {
             return type;
@@ -89,11 +127,7 @@ public class DailyListBean {
             this.readState = readState;
         }
 
-        private int id;
-        private String ga_prefix;
-        private String title;
-        private List<String> images;
-        private boolean readState;
+
 
         @Override
         public String toString() {
@@ -108,12 +142,23 @@ public class DailyListBean {
         }
     }
 
+
+    /**
+     *  "top_stories": [
+     {
+     "image": "https:\/\/pic4.zhimg.com\/v2-a8c6c4f041f7f2090023d1334c69104f.jpg",
+     "type": 0,
+     "id": 9655414,
+     "ga_prefix": "110607",
+     "title": "她从万丈高空跳下，成为世界上第一个翼装飞跃喜马拉雅的中国人"
+     },
+     */
     public static class TopStoriesBean {
-        private String image;
-        private int type;
+        private String image;  // 滚动的图片地址
+        private int type;  // 类型
         private int id;
-        private String ga_prefix;
-        private String title;
+        private String ga_prefix; // 前缀
+        private String title;  // 标题
 
         public String getImage() {
             return image;
